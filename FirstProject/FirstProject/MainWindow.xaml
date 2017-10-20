@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FirstProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="372.471" Width="665.889">
     <Grid>
-        
+        <Button x:Name="btnStream" Content="Stream" Margin="0,0,5,8" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom" Click="btnStram_Click"/>
+        <Label x:Name="lbStatus" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="8,10,0,0"/>
+        <Label x:Name="labelStatus" Content="--" Margin="52,10,0,0" VerticalAlignment="Top" FontSize="10" HorizontalAlignment="Left" Height="23"/>
+        <Image x:Name="StreamScreen" Margin="10,38,10,40"/>
+
     </Grid>
 </Window>
