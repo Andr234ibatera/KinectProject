@@ -5,12 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FirstProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="372.471" Width="665.889">
+        Title="MainWindow" Height="423.804" Width="579.222">
     <Grid>
-        <Button x:Name="btnStream" Content="Stream" Margin="0,0,5,8" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom" Click="btnStram_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="450*"/>
+            <ColumnDefinition Width="121*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="btnColor" Content="Color" Margin="0,0,10,10" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom" Click="btnColor_Click" Grid.Column="1"/>
         <Label x:Name="lbStatus" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="8,10,0,0"/>
         <Label x:Name="labelStatus" Content="--" Margin="52,10,0,0" VerticalAlignment="Top" FontSize="10" HorizontalAlignment="Left" Height="23"/>
-        <Image x:Name="StreamScreen" Margin="10,38,10,40"/>
+        <Image x:Name="Screen" Margin="10,38,10,35" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnDepth" Content="Depth" Margin="0,0,91,10" Click="btnDepth_Click" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>
