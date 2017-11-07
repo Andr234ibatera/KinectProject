@@ -16,3 +16,4 @@ E:\Meus Documentos\Documentos\Faculdade\Projeto GPG\Demos Kinect\KinectProject\F
 E:\Meus Documentos\Documentos\Faculdade\Projeto GPG\Demos Kinect\KinectProject\FirstProject\FirstProject\obj\Debug\FirstProject.csproj.CoreCompileInputs.cache
 E:\Meus Documentos\Documentos\Faculdade\Projeto GPG\Demos Kinect\KinectProject\FirstProject\FirstProject\obj\Debug\FirstProject.exe
 E:\Meus Documentos\Documentos\Faculdade\Projeto GPG\Demos Kinect\KinectProject\FirstProject\FirstProject\obj\Debug\FirstProject.pdb
+E:\Meus Documentos\Documentos\Faculdade\Projeto GPG\Demos Kinect\KinectProject\FirstProject\FirstProject\obj\Debug\FirstProject.csprojResolveAssemblyReference.cache

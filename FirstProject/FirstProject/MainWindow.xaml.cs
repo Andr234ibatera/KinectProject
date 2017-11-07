@@ -23,7 +23,7 @@ namespace FirstProject
     public partial class MainWindow : Window
     {
         //Kinect SDK
-        private KinectSensor kinectSensor = KinectSensor.GetDefault();
+        KinectSensor kinectSensor = KinectSensor.GetDefault();
         //private MultiSourceFrameReader reader = null;
         ColorFrameReader colorFrameReader;
         FrameDescription colorFrameDescription;
@@ -94,6 +94,7 @@ namespace FirstProject
             }
         }
 
+        //Imagem de Profundidade
         private void btnDepth_Click(object sender, RoutedEventArgs e)
         {
             if (kinectSensor.IsOpen)
@@ -115,10 +116,9 @@ namespace FirstProject
                 kinectSensor.Open();
                 try
                 {
-                    //Imagem de Profundidade
                     depthFrameDescription = kinectSensor.DepthFrameSource.FrameDescription;
 
-                    depthImage = new WriteableBitmap(depthFrameDescription.Height, depthFrameDescription.Width, 96, 96, PixelFormats.Gray8, null);
+                    depthImage = new WriteableBitmap(depthFrameDescription.Width, depthFrameDescription.Height, 96, 96, PixelFormats.Gray8, null);
                     depthBuffer = new ushort[depthFrameDescription.LengthInPixels];
                     depthBitmapBuffer = new byte[depthFrameDescription.LengthInPixels];
                     depthRect = new Int32Rect(0, 0, depthFrameDescription.Width, depthFrameDescription.Height);
@@ -158,8 +158,6 @@ namespace FirstProject
         {
             try
             {
-                //UpdateDepthValue();
-
                 //0 a 8000
                 for (int i=0;i < depthBuffer.Length;i++)
                 {
@@ -173,43 +171,7 @@ namespace FirstProject
                 Close();
             }
         }
-
-        //private void UpdateDepthValue()
-        //{
-        //    try
-        //    {
-        //        CanvasPoint.Children.Clear();
-
-        //        var ellipse = new Ellipse()
-        //        {
-        //            Width = R,
-        //            Height = R,
-        //            StrokeThickness = R / 4,
-        //            Stroke = Brushes.Red,
-        //        };
-        //        Canvas.SetLeft(ellipse, depthPoint.X - (R / 2));
-        //        Canvas.SetTop(ellipse, depthPoint.Y - (R / 2));
-        //        CanvasPoint.Children.Add(ellipse);
-
-        //        int depthindex = (int)((depthPoint.Y * depthFrameDesc.Width) + depthPoint.X);
-
-        //        var text = new TextBlock()
-        //        {
-        //            Text = string.Format("{0}mm", depthBuffer[depthindex]),
-        //            FontSize = 20,
-        //            Foreground = Brushes.Green,
-        //        };
-        //        Canvas.SetLeft(text, depthPoint.X);
-        //        Canvas.SetTop(text, depthPoint.Y - R);
-        //        CanvasPoint.Children.Add(text)
-        //    }
-        //    catch (Exception exception)
-        //    {
-        //        MessageBox.Show(exception.Message);
-        //        Close();
-        //    }
-        //}
-
+        
         private void UpdateDepth(DepthFrameArrivedEventArgs e)
         {
             try
