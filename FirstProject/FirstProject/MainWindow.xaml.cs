@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using Microsoft.Kinect;
+using Microsoft.Kinect.Face;
 
 namespace FirstProject
 {
@@ -24,13 +25,22 @@ namespace FirstProject
     {
         //Kinect SDK
         KinectSensor kinectSensor = KinectSensor.GetDefault();
-        //private MultiSourceFrameReader reader = null;
+        
         ColorFrameReader colorFrameReader;
         FrameDescription colorFrameDescription;
         ColorImageFormat colorImageFormat = ColorImageFormat.Bgra;
 
         DepthFrameReader depthFrameReader;
         FrameDescription depthFrameDescription;
+
+        BodyFrameReader bodyFrameReader;
+        IList<Body> bodies;
+        int bodyCount;
+
+        FaceFrameSource[] faceFrameSource;
+        FaceFrameReader[] faceFrameReader;
+        FaceFrameResult[] faceFrameResults;
+
 
         //WPF
         WriteableBitmap colorBitmap;
@@ -72,6 +82,9 @@ namespace FirstProject
             {
                 labelStatus.Content = "Kinect Collecting Color Image";
                 kinectSensor.Open();
+
+                bodies = new Body[kinectSensor.BodyFrameSource.BodyCount];
+
                 try
                 {
                     colorFrameDescription = kinectSensor.ColorFrameSource.CreateFrameDescription(colorImageFormat);
@@ -84,6 +97,8 @@ namespace FirstProject
                     colorRect = new Int32Rect(0, 0, colorFrameDescription.Width, colorFrameDescription.Height);
                     colorBuffer = new byte[colorStride * colorFrameDescription.Height];
                     Screen.Source = colorBitmap;
+                    
+
                 }
                 catch (Exception exception)
                 {
@@ -144,6 +159,7 @@ namespace FirstProject
         {
             try
             {
+                UpdateEllipsePosition();
                 UpdateDepth(e);
                 DrawDepthFrame();
             }
@@ -196,6 +212,7 @@ namespace FirstProject
         {
             try
             {
+                UpdateEllipsePosition();
                 UpdateColorFrame(args);
                 DrawColorFrame();
             }
@@ -237,6 +254,14 @@ namespace FirstProject
                 MessageBox.Show(exception.Message);
                 Close();
             }
+        }
+
+        private void UpdateEllipsePosition()
+        { 
+            Canvas.SetLeft(Target, Canvas.ActualWidth/2 - Target.ActualWidth/2);
+            Canvas.SetTop(Target, Canvas.ActualHeight/2 - Target.ActualHeight/2);
+            labelStatus.Content = "X "+(Canvas.ActualWidth / 2 - Target.ActualWidth / 2) +
+                " - Y "+(Canvas.ActualHeight / 2 - Target.ActualHeight / 2);
         }
         
     }

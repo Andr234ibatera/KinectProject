@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FirstProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="423.804" Width="579.222">
+        Title="MainWindow" Height="375.804" Width="525.889">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="450*"/>
@@ -16,6 +16,9 @@
         <Label x:Name="labelStatus" Content="--" Margin="52,10,0,0" VerticalAlignment="Top" FontSize="10" HorizontalAlignment="Left" Height="23"/>
         <Image x:Name="Screen" Margin="10,38,10,35" Grid.ColumnSpan="2"/>
         <Button x:Name="btnDepth" Content="Depth" Margin="0,0,91,10" Click="btnDepth_Click" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom"/>
+        <Canvas x:Name="Canvas" Margin="10,38,10,35" Grid.ColumnSpan="2">
+            <Ellipse x:Name="Target" Stroke="Red" Height="100" Canvas.Left="380" Canvas.Top="106" Width="100"/>
+        </Canvas>
 
     </Grid>
 </Window>
